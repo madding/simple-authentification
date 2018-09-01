@@ -1,4 +1,6 @@
 class UserSessionsController < ApplicationController
+  layout 'authentification'
+
   def new
   end
 
