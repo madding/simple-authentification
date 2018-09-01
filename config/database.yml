@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 50
+
+development:
+  <<: *default
+  database: simple_auth_development
+
+test:
+  <<: *default
+  database: simple_auth_test
+
+production:
+  <<: *default
+  database: <%= ENV['POSTGRESQL_DATABASE'] %>
+  username: <%= ENV['POSTGRESQL_USERNAME'] %>
+  password: <%= ENV['POSTGRESQL_PASSWORD'] %>
