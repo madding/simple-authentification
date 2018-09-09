@@ -1,4 +1,3 @@
 class HelloController < ApplicationController
-  def index
-  end
+  before_action :login_required?
 end
