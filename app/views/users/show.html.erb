@@ -1,4 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  Email: <%= @user.email %>
+</p>
+
+<p>
+  Admin: <%= boolean_to_string(@user.admin?) %>
+</p>
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

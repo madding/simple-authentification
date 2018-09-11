@@ -3,13 +3,11 @@ class UsersController < ApplicationController
   include Pagination
   per_page_default 5
 
-  helper_method :query_params
-
   before_action :admin_required?
   before_action :set_user, only: %i[show edit update destroy]
 
   def index
-    @users = users_filter(User.all, query_params)
+    @users = users_filter(User.all, params)
     @users = @users.paginate(per_page, current_page)
   end
 
@@ -51,9 +49,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(%i[email password admin])
-  end
-
-  def query_params
-    params.require(:query).permit(:email)
   end
 end

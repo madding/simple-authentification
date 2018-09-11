@@ -12,13 +12,17 @@ module Pagination
 
     def pagination_block(model)
       return [] if current_page.zero?
-      total_pages = model.unscope(:offset, :limit).count / per_page
+      total_pages = calculate_total_pages(model.unscope(:offset, :limit).count)
       pages = []
       3.downto(1).each { |index| pages << current_page - index }
       pages << current_page
       1.upto(3).each { |index| pages << current_page + index }
       pages.delete_if { |page| page < 1 || page > total_pages }
       pages
+    end
+
+    def calculate_total_pages(count)
+      count / per_page + ((count % per_page.to_f).zero? ? 0 : 1)
     end
 
     def current_page
