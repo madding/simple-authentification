@@ -4,14 +4,12 @@ module FilterableUsers
   private
 
   def users_filter(users, params)
-    filter_by_email(users, params)
+    users = filter_by_email(users, params)
+    users
   end
 
   def filter_by_email(users, params)
-    if params[:query] && params[:query][:email].present?
-      return users.filter_by_email(params[:query][:email])
-    end
-
+    users = users.filter_by_email(params[:email]) if params[:email].present?
     users
   end
 end
