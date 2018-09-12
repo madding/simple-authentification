@@ -10,22 +10,6 @@
   </head>
 
   <body class="text-center">
-    <div class="container">
-      <% unless flash.empty? %>
-        <div class="row">
-          <div class="col align-self-center">
-            <% flash.each do |key, message| %>
-              <div class="alert alert-<%= key %>" role="alert">
-                <%= message %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-
-      <div class="row">
-        <%= yield %>
-      </div>
-    </div>
+    <%= yield %>
   </body>
 </html>
