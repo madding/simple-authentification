@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   include Pagination
   per_page_default 5
 
-  before_action :admin_required?, except: %i[new create]
+  before_action :admin_required?, except: [:new, :create]
   before_action :set_user, only: %i[show edit update destroy]
 
   def index
