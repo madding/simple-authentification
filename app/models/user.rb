@@ -4,6 +4,7 @@ class User < ApplicationRecord
   attr_accessor :password
 
   validates :email, :password, presence: true
+  validates :email, uniqueness: true
 
   before_create :set_crypted_password
 

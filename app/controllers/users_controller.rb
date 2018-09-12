@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   include Pagination
   per_page_default 5
 
-  before_action :admin_required?
+  before_action :admin_required?, except: [:new, :create]
   before_action :set_user, only: %i[show edit update destroy]
 
   def index
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user, notice: 'User was successfully created.'
     else
-      render :new
+      render :new, layout: 'authentification'
     end
   end
 
