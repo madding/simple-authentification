@@ -1,24 +1,9 @@
-# README
+# simple-authentification
+Authentification, authorization, pagination and filter manually, without gems.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Start application
+- bundle install
+- rake db:create
+- rake db:seeds
+- rails s
+- register in application and change flag "users.admin" in database

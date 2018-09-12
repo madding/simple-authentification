@@ -1,0 +1,30 @@
+
+<%= form_with(model: user, local: true, class: 'form-signin') do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.label :email, 'Email address' %>
+    <%= form.text_field :email,
+                      class: 'form-control',
+                      type: :email,
+                      required: true,
+                      autofocus: true %>
+
+    <div class="custom-control custom-checkbox">
+      <%= form.check_box :admin, class: 'custom-control-input' %>
+      <%= form.label :admin, 'Is admin', class: 'custom-control-label' %>
+    </div>
+
+    <%= form.submit 'Save', class: 'btn btn-lg btn-primary btn-block' %>
+  </div>
+<% end %>

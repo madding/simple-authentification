@@ -1,0 +1,11 @@
+<% if pages.present? %>
+  <nav aria-label="Pagination">
+    <ul class="pagination">
+      <% pages.each do |page| %>
+        <li class="page-item<%= (page == current_page) ? ' active' : '' %>">
+          <%= link_to page, users_path(request.query_parameters.merge(page: page)), class: 'page-link' %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+<% end %>
